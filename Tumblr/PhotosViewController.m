@@ -46,6 +46,8 @@
         }
     }];
     [task resume];
+    self.tableView.rowHeight = 240;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +63,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
+    //cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
     NSDictionary *post = self.posts[indexPath.row];
     NSArray *photos = post[@"photos"];
     if (photos) {
@@ -80,11 +82,8 @@
         // Download the image
         [cell.photoView setImageWithURL:url];
         
-
     }
-    
-    
-    
+
     return cell;
 }
 
